@@ -22,10 +22,10 @@ pipeline{
                 }
             }
           }
-        stage ('Nexus'){
+        /*stage ('Nexus'){
             steps{
              withCredentials([usernamePassword(credentialsId: 'sudipa_nexus', passwordVariable: 'pwd_2', usernameVariable: 'usr')]) {
-             sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/Akash_Spring/myWebApp_Test-0.0.1-SNAPSHOT.war'
+             sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/Akash_Spring/myWebApp_Test-0.0.1-SNAPSHOT-${BUILD-NUMBER}.war'
            }   
          }
       }
@@ -36,15 +36,15 @@ pipeline{
                     sh label: '', script: 'curl -u  $usr:$pass --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://ec2-13-233-157-196.ap-south-1.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/myWebApp_Test-0.0.1-SNAPSHOT.war\\&path=/Subha_Spring_Test_1' 
                }
             }
-        }
+        }*/
     }
-     post {
+     /*post {
    success {
       slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
     failure {
       slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-    }
+    }*/
     
   }
 }
