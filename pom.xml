@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.Test</groupId>
-	<artifactId>myWebApp_Test</artifactId>
+	<artifactId>Akash-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>TestSpring</name>
+	<name>Akash-spring</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
