@@ -18,7 +18,7 @@ pipeline{
            }
               steps {
                 withSonarQubeEnv('Sonar') {
-                sh "mvn sonar:sonar -Dsonar.host.url=http://18.224.155.110:9000"
+                sh "mvn sonar:sonar -Dsonar.host.url=http://18.224.155.110:9000project.settings=./sonar.properties"
                 }
             }
           }
