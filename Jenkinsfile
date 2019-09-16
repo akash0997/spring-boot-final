@@ -18,7 +18,7 @@ pipeline{
            }
               steps {
                 withSonarQubeEnv('Sonar') {
-                sh "mvn sonar:sonar -Dproject.settings=./sonar.properties"
+                sh '${scannerHome}/bin/sonar-scanner -Dproject.settings=./sonar.properties'
                 }
             }
           }
