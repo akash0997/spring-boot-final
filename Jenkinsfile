@@ -22,10 +22,18 @@ pipeline{
                 }
             }
           }
+        stage ('Jfrog'){
+            steps{
+             withCredentials([usernamePassword(credentialsId: 'akash-jfrog', passwordVariable: 'pwd_2', usernameVariable: 'usr')]) {
+             sh label: '', script: 'curl -X PUT -u $usr:$pwd_2 -T target/Akash-spring-0.0.1-SNAPSHOT.war "https://akashtrial.jfrog.io/akashtrial/libs-release-local/my-webapp-${BUILD_NUMBER}.war"'
+           }   
+         }
+      }
+        
         /*stage ('Nexus'){
             steps{
              withCredentials([usernamePassword(credentialsId: 'sudipa_nexus', passwordVariable: 'pwd_2', usernameVariable: 'usr')]) {
-             sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/Akash_Spring/myWebApp_Test-0.0.1-SNAPSHOT-${BUILD-NUMBER}.war'
+             sh label: '', script: 'curl -u $usr:$pwd_2 --upload-file target/myWebApp_Test-0.0.1-SNAPSHOT.war http://18.224.155.110:8081/nexus/content/repositories/devopstraining/Akash_Spring/myWebApp_Test-0.0.1-SNAPSHOT-${BUILD_NUMBER}.war'
            }   
          }
       }
