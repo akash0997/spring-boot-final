@@ -41,7 +41,7 @@ public class SpringBootDemoApplicationTests
         ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
          
         //Verify request succeed
-        Assert.assertEquals(200, result.getStatusCodeValue());
+        Assert.assertEquals(400, result.getStatusCodeValue());
         Assert.assertEquals(true, result.getBody().contains("employeeList"));
     }
     
@@ -65,7 +65,7 @@ public class SpringBootDemoApplicationTests
         catch(HttpClientErrorException ex)
         {
             //Verify bad request and missing header
-            Assert.assertEquals(400, ex.getRawStatusCode());
+            Assert.assertEquals(200, ex.getRawStatusCode());
             Assert.assertEquals(true, ex.getResponseBodyAsString().contains("Missing request header"));
         }
     }
